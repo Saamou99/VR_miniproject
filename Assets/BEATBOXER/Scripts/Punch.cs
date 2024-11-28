@@ -1,6 +1,6 @@
 ﻿using System;
 using UnityEngine;
-using Tilia.Interactions.Interactables.Interactors;
+
 
 
 //This script must be attached to each glove. 
@@ -21,7 +21,7 @@ public class Punch : MonoBehaviour
 
     private void Start()
     {
-        interactor = gameObject.GetComponentInParent<InteractorFacade>().tag; //Get the tag of the interactor against which, this script is attached.
+        
     }
 
     void Update()
@@ -41,7 +41,7 @@ public class Punch : MonoBehaviour
 
                 //Debug.Log($"Punch thrown using your : {interactor} Hand");
 
-                OnCubeHitHaptics(interactor); //Raise event passing in the Tag of the controller that hit the cube.
+               
             }
            
         }
