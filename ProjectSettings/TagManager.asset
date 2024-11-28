@@ -7,6 +7,10 @@ TagManager:
   - Cube
   - Right_ctrl
   - Left_ctrl
+  - Blue Cube
+  - Red Cube
+  - Blue Glove
+  - Red Glove
   layers:
   - Default
   - TransparentFX

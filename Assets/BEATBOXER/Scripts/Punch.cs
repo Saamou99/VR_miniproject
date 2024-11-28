@@ -29,17 +29,26 @@ public class Punch : MonoBehaviour
 
         if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 1f, layer))
         {
+            
             Vector3 dirVector = transform.position - previousPosn;
 
             if (Vector3.Angle(dirVector, hit.transform.up) > 110f) //Vector3.Angle() requires 2 directional vectors as input to yield an angle value, which will always be limited to 180 degrees
             {
-                GetComponent<AudioSource>().Play(); // play  the Punch sound, when you punch the cube correctly.
-                                
-                OnCubeHit(1); //Raise event letting the script 'BoxesHit' know that 1 cube has been hit correctly.
                 
-                Destroy(hit.transform.gameObject); //cube was punched from the correct side so destroy cube.
 
-                //Debug.Log($"Punch thrown using your : {interactor} Hand");
+                if ((gameObject.CompareTag("Blue Glove") && hit.collider.CompareTag("Blue Cube")) || (gameObject.CompareTag("Red Glove") && hit.collider.CompareTag("Red Cube")) )
+                {
+                    Debug.Log("HIT!");
+                    
+                    GetComponent<AudioSource>().Play(); // play  the Punch sound, when you punch the cube correctly.
+                                
+                    OnCubeHit(1); //Raise event letting the script 'BoxesHit' know that 1 cube has been hit correctly.
+                
+                    Destroy(hit.collider.gameObject); //cube was punched from the correct side so destroy cube.
+
+                    Debug.Log("Destroyed!");
+                }
+                
 
                
             }

@@ -34,7 +34,10 @@ public class GameManager : MonoBehaviour
         if (!allCubesSpawned) //You dont need to unnecessarily count the number of cubes in the level each Update if all Cubes have not been spawned yet.
             return;
 
-        cubeCount = GameObject.FindGameObjectsWithTag("Cube").Length; //Find out if there are any active cubes in the level. 
+        int blueCubeCount = GameObject.FindGameObjectsWithTag("Blue Cube").Length;
+        int redCubeCount = GameObject.FindGameObjectsWithTag("Red Cube").Length;
+
+        cubeCount = blueCubeCount + redCubeCount;
 
         if (cubeCount <= 0) //if no active Cube in the level, raise  the OnLevelComplete event.
         {
