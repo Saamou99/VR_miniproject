@@ -20,6 +20,8 @@ public class GameManager : MonoBehaviour
     private bool allCubesSpawned = false; //maintais the state of whether all cubes have been spawned. Only if all cubes have finished spawning, will you begin executing the code within Update() below.This ensures you don't run the code in update every frame while cubes are still being spawned.
 
     [SerializeField] private GameObject winText;
+    [SerializeField] private GameObject playerHUD;
+    
     [SerializeField] private Text boxesHit;
     [SerializeField] private Text boxesMissed;
     [SerializeField] private Text boxesHitText;
@@ -69,6 +71,7 @@ public class GameManager : MonoBehaviour
     {
         boxesHit.text = ("Boxes Hit: " + boxesHitText.GetComponent<Text>().text);
         boxesMissed.text = ("Boxes Missed: " + boxesMissedText.GetComponent<Text>().text);
+        playerHUD.SetActive(false);
         winText.SetActive(true);
         Debug.Log("LEVEL, COMPLETED");
 

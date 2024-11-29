@@ -3089,6 +3089,7 @@ MonoBehaviour:
   boxesInLevel: 100
   cubeSpawner: {fileID: 1524306920}
   winText: {fileID: 453145571}
+  playerHUD: {fileID: 911776131}
   boxesHit: {fileID: 1537264609}
   boxesMissed: {fileID: 1537264612}
   boxesHitText: {fileID: 658034396}
