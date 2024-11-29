@@ -7140,6 +7140,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Blue_Cube
       objectReference: {fileID: 0}
+    - target: {fileID: 7527980964133579129, guid: d6024f4db6ac70f4b9dda26a9667e89c,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7157,6 +7162,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Red_Cube
+      objectReference: {fileID: 0}
+    - target: {fileID: 981773870828952324, guid: 96385211913ad4d4ea68fff7704e5026,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7633343954691188126, guid: 96385211913ad4d4ea68fff7704e5026,
         type: 3}
