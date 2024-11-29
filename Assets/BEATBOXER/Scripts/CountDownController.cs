@@ -29,6 +29,10 @@ public class CountDownController : MonoBehaviour
             countDown--;
         }
 
+        AudioSource audioSource = GetComponent<AudioSource>();
+        
+        audioSource.Play();
+
         playerHUD.SetActive(true); //Activate  the Player HUD game object in the hierarchy.
 
         cubeSpawner.SetActive(true); //Activate  the Cube Spawner game object in the hierarchy.

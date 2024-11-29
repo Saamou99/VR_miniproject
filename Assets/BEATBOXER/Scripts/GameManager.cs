@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System.Net.Mime;
+using UnityEngine;
+using TMPro;
+using UnityEngine.UI;
 
 //This script needs to be placed on the 'GameManager' game object in the hierarchy.
 //Allows you to set a pre-defined number of cubes for your level.
@@ -15,6 +18,16 @@ public class GameManager : MonoBehaviour
 
     private int cubeCount; //keeps a count of the number of cubes in the level. If cubeCount is zero, all cube blocks have been spawned. 
     private bool allCubesSpawned = false; //maintais the state of whether all cubes have been spawned. Only if all cubes have finished spawning, will you begin executing the code within Update() below.This ensures you don't run the code in update every frame while cubes are still being spawned.
+
+    [SerializeField] private GameObject winText;
+    [SerializeField] private Text boxesHit;
+    [SerializeField] private Text boxesMissed;
+    [SerializeField] private Text boxesHitText;
+    [SerializeField] private Text boxesMissedText;
+    
+    
+    
+
 
 
     private void OnEnable()
@@ -54,7 +67,9 @@ public class GameManager : MonoBehaviour
 
     void OnLevelComplete()
     {
-       
+        boxesHit.text = ("Boxes Hit: " + boxesHitText.GetComponent<Text>().text);
+        boxesMissed.text = ("Boxes Missed: " + boxesMissedText.GetComponent<Text>().text);
+        winText.SetActive(true);
         Debug.Log("LEVEL, COMPLETED");
 
     }

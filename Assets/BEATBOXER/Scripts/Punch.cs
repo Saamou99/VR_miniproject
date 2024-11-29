@@ -24,38 +24,31 @@ public class Punch : MonoBehaviour
         
     }
 
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-
-        if (Physics.Raycast(transform.position, transform.forward, out RaycastHit hit, 1f, layer))
+        // Check if the current game object has the "Red Glove" or "Blue Glove" tag
+        if (gameObject.CompareTag("Red Glove") && other.CompareTag("Red Cube"))
         {
-            
-            Vector3 dirVector = transform.position - previousPosn;
-
-            if (Vector3.Angle(dirVector, hit.transform.up) > 110f) //Vector3.Angle() requires 2 directional vectors as input to yield an angle value, which will always be limited to 180 degrees
-            {
-                
-
-                if ((gameObject.CompareTag("Blue Glove") && hit.collider.CompareTag("Blue Cube")) || (gameObject.CompareTag("Red Glove") && hit.collider.CompareTag("Red Cube")) )
-                {
-                    Debug.Log("HIT!");
-                    
-                    GetComponent<AudioSource>().Play(); // play  the Punch sound, when you punch the cube correctly.
-                                
-                    OnCubeHit(1); //Raise event letting the script 'BoxesHit' know that 1 cube has been hit correctly.
-                
-                    Destroy(hit.collider.gameObject); //cube was punched from the correct side so destroy cube.
-
-                    Debug.Log("Destroyed!");
-                }
-                
-
-               
-            }
-           
+            HandleHit(other);
         }
-      
-        previousPosn = transform.position;
+        else if (gameObject.CompareTag("Blue Glove") && other.CompareTag("Blue Cube"))
+        {
+            HandleHit(other);
+        }
     }
 
+    private void HandleHit(Collider other)
+    {
+        Debug.Log("HIT!");
+
+        GetComponent<AudioSource>().Play(); // Play the Punch sound when the cube is hit correctly.
+
+        OnCubeHit(1); // Raise event to notify 'BoxesHit' that 1 cube has been hit correctly.
+        
+        Debug.Log("On Cube HIT!");
+
+        Destroy(other.gameObject.GetComponentInParent<Rigidbody>().gameObject); // Destroy the cube as it was punched correctly.
+
+        Debug.Log("Destroyed!");
+    }
 }
