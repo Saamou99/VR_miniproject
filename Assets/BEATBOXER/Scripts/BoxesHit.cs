@@ -37,7 +37,7 @@ public class BoxesHit : MonoBehaviour
     private void OnDisable()
     {
         leftPunch.OnCubeHit -= UpdateUIData;
-        rightPunch.OnCubeHit += UpdateUIData;
+        rightPunch.OnCubeHit -= UpdateUIData;
 
     }
 
