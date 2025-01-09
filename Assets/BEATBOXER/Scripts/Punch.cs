@@ -22,7 +22,6 @@ public class Punch : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        // Check if the current game object has the "Red Glove" or "Blue Glove" tag
         if (gameObject.CompareTag("Red Glove") && other.CompareTag("Red Cube"))
         {
             HandleHit(other);
@@ -38,13 +37,13 @@ public class Punch : MonoBehaviour
     {
         Debug.Log("HIT!");
 
-        GetComponent<AudioSource>().Play(); // Play the Punch sound when the cube is hit correctly.
+        GetComponent<AudioSource>().Play(); 
 
-        OnCubeHit(1); // Raise event to notify 'BoxesHit' that 1 cube has been hit correctly.
+        OnCubeHit(1); 
         
         Debug.Log("On Cube HIT!");
 
-        Destroy(other.gameObject.GetComponentInParent<Rigidbody>().gameObject); // Destroy the cube as it was punched correctly.
+        Destroy(other.gameObject.GetComponentInParent<Rigidbody>().gameObject); 
 
         Debug.Log("Destroyed!");
     }
